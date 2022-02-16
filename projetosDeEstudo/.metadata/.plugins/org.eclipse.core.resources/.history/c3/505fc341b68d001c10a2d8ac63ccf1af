@@ -1,0 +1,7 @@
+#language:pt
+#encoding: utf-8
+Funcionalidade: Filtro Evidencias - QTeste
+
+Cenario: testa filtro evidencia campo componente
+Dado que estou logado no QTeste
+Quado inserir um valor no campo

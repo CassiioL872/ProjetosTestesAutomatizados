@@ -1,0 +1,36 @@
+package br.ce.wcaquino.rest;
+
+public class User {
+
+	private String name;
+	private int age;
+	private double salario;
+	
+	public User(String name, int age, double salario) {
+		this.name = name;
+		this.age = age;
+		this.salario = salario;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public double getSalario() {
+		return salario;
+	}
+	
+	public void setSalario(double salario) {
+		this.salario = salario;
+	}
+	
+	
+}

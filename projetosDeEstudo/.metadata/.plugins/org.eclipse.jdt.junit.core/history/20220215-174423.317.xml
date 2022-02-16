@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="RunnerCadastrarEvidencia" project="ath-qteste-teste-interface" tests="1" started="0" failures="0" errors="2" ignored="0">
+  <testcase name="runners.desenv.Evidencia.AlterarEvidencia.RunnerCadastrarEvidencia" classname="runners.desenv.Evidencia.AlterarEvidencia.RunnerCadastrarEvidencia" incomplete="true"/>
+  <testsuite name="Unrooted Tests" displayname="Unrooted Tests">
+    <testcase name="Test mechanism" classname="Test mechanism" displayname="Test mechanism">
+      <error>java.lang.IndexOutOfBoundsException: Index: 0, Size: 0&#13;
+	at java.util.ArrayList.rangeCheck(ArrayList.java:659)&#13;
+	at java.util.ArrayList.get(ArrayList.java:435)&#13;
+	at br.com.bb.ath.ftabb.runner.FTABBTestListener.testesIniciados(FTABBTestListener.java:88)&#13;
+	at br.com.bb.ath.ftabb.runner.JUnitListener.testRunStarted(JUnitListener.java:27)&#13;
+	at org.junit.runner.notification.SynchronizedRunListener.testRunStarted(SynchronizedRunListener.java:35)&#13;
+	at org.junit.runner.notification.RunNotifier$1.notifyListener(RunNotifier.java:91)&#13;
+	at org.junit.runner.notification.RunNotifier$SafeNotifier.run(RunNotifier.java:72)&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestRunStarted(RunNotifier.java:88)&#13;
+	at br.com.bb.ath.ftabb.runner.FTABBCucumberRunner.run(FTABBCucumberRunner.java:55)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206)&#13;
+&#13;
+java.lang.NullPointerException&#13;
+	at br.com.bb.ath.ftabb.apiclients.registro_execucoes.ExecucoesService.getAmbienteGravacao(ExecucoesService.java:49)&#13;
+	at br.com.bb.ath.ftabb.apiclients.registro_execucoes.ExecucoesService.concluirRegistroExecucao(ExecucoesService.java:151)&#13;
+	at br.com.bb.ath.ftabb.runner.FTABBTestListener.testesFinalizados(FTABBTestListener.java:104)&#13;
+	at br.com.bb.ath.ftabb.runner.JUnitListener.testRunFinished(JUnitListener.java:38)&#13;
+	at org.junit.runner.notification.SynchronizedRunListener.testRunFinished(SynchronizedRunListener.java:42)&#13;
+	at org.junit.runner.notification.RunNotifier$2.notifyListener(RunNotifier.java:103)&#13;
+	at org.junit.runner.notification.RunNotifier$SafeNotifier.run(RunNotifier.java:72)&#13;
+	at org.junit.runner.notification.RunNotifier.fireTestRunFinished(RunNotifier.java:100)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:87)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

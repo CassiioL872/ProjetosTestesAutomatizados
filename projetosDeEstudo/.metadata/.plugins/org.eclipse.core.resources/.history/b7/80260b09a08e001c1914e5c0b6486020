@@ -1,0 +1,25 @@
+#language:pt
+#encoding: utf-8
+Funcionalidade: Cadastro de Evidencias - Testes de Aceitacao - QTeste
+
+  Contexto: 
+  	* login QTeste desenv
+	  * valida Ambiente QTeste desenv
+	  * valida Acesso QTeste home
+	  * clique Home QTeste lista-evidencias and desenv
+		* valida Acesso QTeste lista-evidencias
+
+  @teste-aceitacao
+  Esquema do Cenario: Como testador, desejo cadastrar uma nova evidencia no QTeste, do tipo teste de aceitacao
+  	* selecionar Adicionar Evidencia
+    * selecionar Tipo Artefato <tipoArtefato>
+    * preencher Historia <historia>
+    * preencher Entrega <entrega>
+    * selecionar Ambiente Evidencia <ambiente>
+    * selecionar Tipo Teste <tipoTeste>
+    * preencher Url Evidencia <urlEvidencia>
+    * adicionar Nova Url Evidencia
+    * selecionar Status Teste <status>
+    * acionar Botao Salvar Evidencia
+    * validar Inclusao Evidencia ne
+    * eu nao sei tambem

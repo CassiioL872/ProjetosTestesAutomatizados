@@ -1,0 +1,16 @@
+#language:pt
+#encoding: utf-8
+Funcionalidade: Filtro Evidencias - QTeste
+
+  Contexto: 
+  	* login QTeste desenv
+  	* valida Ambiente QTeste desenv
+	  * valida Acesso QTeste home
+	  * clique Home QTeste lista-evidencias and desenv
+		* valida Acesso QTeste lista-evidencias
+
+  @filtrar-evidencia
+  Esquema do Cenario: Como testador, desejo filtrar a lista de evidencias no QTeste
+  	* validar Evidencia informada
+
+    #validar Tipo de Filtros

@@ -1,0 +1,21 @@
+package runners.desenv.Evidencia.AlterarEvidencia;
+
+import org.junit.runner.RunWith;
+
+import br.com.bb.ath.ftabb.runner.FTABBCucumberRunner;
+import cucumber.api.CucumberOptions;
+import cucumber.api.SnippetType;
+
+@RunWith(FTABBCucumberRunner.class)
+@CucumberOptions(
+					plugin = {"pretty","json:target/cucumber.json"}, 
+					features = "classpath:features/desenv/Evidencia/FiltrarEvidencia/FiltrarTodosOsCampos.feature", 
+					tags = {"@alterar-evidencia"}, 
+					snippets = SnippetType.CAMELCASE,
+					monochrome = true, 
+					glue = "steps"
+				)
+
+public class RunnerCadastrarEvidencia {
+
+}

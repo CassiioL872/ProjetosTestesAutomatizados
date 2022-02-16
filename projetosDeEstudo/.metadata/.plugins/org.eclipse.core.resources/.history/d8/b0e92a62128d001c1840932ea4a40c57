@@ -1,0 +1,52 @@
+package br.ce.wcaquino.rest;
+
+import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
+
+import org.junit.Test;
+
+
+public class TestRestComXML {
+
+	@Test
+	public void devoTrabalharComXML() {
+		
+		baseURI = "https://restapi.wcaquino.me";
+		port = 443;
+		basePath = "/v2";
+		
+		String nome = 	given().
+		
+		when().
+			get("/users").
+		then().
+			statusCode(200).	
+				body("users.user.size()", is(3)).
+				body("users.user.@id", hasItems("1", "2", "3")).
+				body("users.user[0].name", is("João da Silva")).
+				body("users.user.find{it.age == 25}.name", is("Maria Joaquina")).
+				extract().path("users.user.name.findAll{it.toString().startsWith('Maria')}");
+	
+	
+	}
+	
+	@Test
+	public void devoMapearElementosComXPATH() {
+		given().
+		
+		when().
+			get("https://restapi.wcaquino.me/usersXML").
+		then().
+			statusCode(200).
+			body(hasXPath("count(/users/user)", is("3"))).
+			body(hasXPath("/users/user[@id='1']")).
+			body(hasXPath("//users/user[@id='1']"))
+			
+	
+	;}
+
+	
+
+
+}

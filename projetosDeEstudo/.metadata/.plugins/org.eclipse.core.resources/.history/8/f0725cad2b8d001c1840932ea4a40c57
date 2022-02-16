@@ -1,0 +1,9 @@
+package br.ce.wcaquino.rest;
+
+public class User {
+
+	private String name;
+	private int age;
+	private double salario;
+	
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.montanha.gerenciador.viagem&apos; to &apos;com.montanha.gerenciador.viagens&apos;&#x0D;&#x0A;- Original project: &apos;gerenciador-viagens&apos;&#x0D;&#x0A;- Original element: &apos;gerenciador-viagens/src/test/java/com.montanha.gerenciador.viagem&apos;&#x0D;&#x0A;- Renamed element: &apos;gerenciador-viagens/src/test/java/com.montanha.gerenciador.viagens&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.montanha.gerenciador.viagem&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/test\/java&lt;com.montanha.gerenciador.viagem" name="com.montanha.gerenciador.viagens" qualified="false" references="true" stamp="1643914219721" textual="false" version="1.0"/>
+</session>

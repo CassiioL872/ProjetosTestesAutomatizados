@@ -1,0 +1,56 @@
+package br.ce.wcaquino.rest;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
+
+import org.junit.Test;
+
+public class Auth {
+
+	@Test
+	public void deveAcessarSWAPI() {
+		
+		given().
+			log().all()
+		.when()
+			.get("https://swapi.co/api/people/1")
+		.then()
+			.log().all()
+			.body("name", is("Luke Skywalker"))
+			
+			;}
+	
+
+
+	
+	@Test
+	public void deveObterClima() {
+		
+		given().
+			log().all()
+			.queryParam("q", "Fortaleza,BR")
+			.queryParam("appid", "742056cb04c74becf7267879ba3bcfd3")
+			.queryParam("units", "metric")
+			.when()
+			.get("https://api.openweathermap.org/data/2.5/weather?q=Fortaleza,BR&appid=742056cb04c74becf7267879ba3bcfd3&units=metric")
+		.then()
+			.log().all()
+			.statusCode(200)
+			.body("name", is("Fortaleza"))
+			.body("coord.lon", is(-38.5247f))
+			;}
+	
+	
+	@Test
+	public void naoDeveAcessarSemSenha() {
+		
+		given().
+			log().all()
+			.when()
+			.get("https://restapi.wcaquino.me/basicauth")
+		.then()
+			.log().all()
+			.statusCode(401)
+			;}
+	
+}

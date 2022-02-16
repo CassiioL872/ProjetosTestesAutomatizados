@@ -1,0 +1,22 @@
+package br.ce.wcaquino.rest;
+
+import static io.restassured.RestAssured.given;
+
+import org.junit.Test;
+
+public class FileTest {
+
+	@Test
+	public void deveObrigarEnviarArquivo() {
+		given()
+			.log()
+			.all()
+		
+		.when()
+			.post("https://restapi.wcaquino.me/upload")
+		.then()
+			.log().all()
+			
+	;}
+	
+}

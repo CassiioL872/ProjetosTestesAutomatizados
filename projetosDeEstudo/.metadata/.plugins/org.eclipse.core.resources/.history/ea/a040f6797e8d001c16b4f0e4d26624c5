@@ -1,0 +1,25 @@
+package br.ce.wcaquino.rest;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
+
+import org.hamcrest.Matchers;
+import org.junit.Test;
+
+public class FileTest {
+
+	@Test
+	public void deveObrigarEnviarArquivo() {
+		given()
+			.log()
+			.all()
+		
+		.when()
+			.post("https://restapi.wcaquino.me/upload")
+		.then()
+			.log().all()
+			.statusCode(404)
+			.body("error", is("Arquivo não enviado"))
+			;}
+	
+}

@@ -1,0 +1,8 @@
+#language: pt
+#encoding: utf-8
+
+Funcionalidade: Testar filtros
+
+Cenario: filtrar testes pelo componente
+Dado que o usuario esteja logado
+Quando

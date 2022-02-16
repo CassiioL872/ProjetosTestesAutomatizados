@@ -1,0 +1,178 @@
+package steps;
+
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+
+import br.com.bb.ath.ftabb.FTABB;
+import br.com.bb.ath.ftabb.FTABBContext;
+import br.com.bb.ath.ftabb.enums.TipoAplicacao;
+import br.com.bb.ath.ftabb.qteste.QTesteWeb;
+import br.com.bb.ath.ftabb.utilitarios.FTABBUtils;
+import cucumber.api.java.pt.Dado;
+import models.Ambiente;
+import models.PageType;
+import models.QTesteWebModule;
+import pages.AnuenciaPage;
+import pages.HomePage;
+import pages.ListaEvidenciasPage;
+import pages.LoginPage;
+import pages.TestesPage;
+import utils.PageUtils;
+
+public class LoginSteps extends FTABBUtils {
+
+	private static QTesteWebModule module;
+	private WebDriver driver;
+
+	public static void abrirQTeste1() {
+		if (module == null) {
+			module = new QTesteWebModule();
+		}
+		FTABBContext ctx = FTABBContext.getContext();
+		ctx.registrarCanal(module, TipoAplicacao.WEB);
+		ctx.boot();
+
+		if (!ctx.getBrowserModule().browserEstaInicializado()) {
+			ctx.getBrowserModule().getBrowserDriver().inicializarDriver();
+		}
+
+		ctx.getBrowserModule().getWebActions().abrirUrl(module.getLink());
+	}
+	
+	public static void fecharQTeste() {
+        FTABBContext.getContext().getBrowserModule().getWebActions().fecharNavegador();
+    }
+
+	@Dado("^login QTeste (.*)$")
+	public void loginQTeste(String ambiente) throws Exception {
+		QTesteWeb.abrirQTeste();
+		Thread.sleep(5000);
+		LoginPage loginPage = new LoginPage();
+		loginPage.loginQteste(ambiente);
+		capturarTela();
+	}
+	
+	@Dado("^abrir login QTeste$")
+	public void abrirLoginQTeste() throws Exception {
+		QTesteWeb.abrirQTeste();
+		Thread.sleep(5000);
+		capturarTela();
+	}
+	
+	@Dado("^scraping QTeste$")
+	public void scrapingQTeste() throws Exception {
+		QTesteWeb.abrirQTeste();
+		List<String> urls  = new ArrayList<String>();
+		urls.add("https://www.bb.com.br/pbb/pagina-inicial");
+		urls.add("https://www.bb.com.br/pbb/pagina-inicial/voce/produtos-e-servicos/contas");
+		urls.add("https://www.bb.com.br/pbb/pagina-inicial/clube-de-beneficios");
+		urls.add("https://www.bb.com.br/pbb/pagina-inicial/voce/produtos-e-servicos/cartoes");	
+		urls.add("https://www.bb.com.br/pbb/pagina-inicial/voce/produtos-e-servicos/credito");		
+		urls.add("https://www.bb.com.br/pbb/pagina-inicial/voce/produtos-e-servicos/financiamentos");	
+		urls.add("https://www.bb.com.br/pbb/pagina-inicial/voce/produtos-e-servicos/investimentos");	
+		urls.add("https://www.bb.com.br/pbb/pagina-inicial/voce/produtos-e-servicos/seguros");	
+		urls.add("https://www.bb.com.br/pbb/pagina-inicial/voce/produtos-e-servicos/capitalizacao");	
+		
+		for(String u : urls){
+		FTABB.abrirUrl(u);
+		Thread.sleep(10000);
+		driver = PageUtils.retornaDriverSelenium();
+		String title = (String)((JavascriptExecutor) driver).executeScript("return document.title;");
+		String description = (String)((JavascriptExecutor) driver).executeScript("return (document.querySelector(\"meta[name='description']\") ? (document.querySelector(\"meta[name='description']\").content) : \"-\");");
+		String canonical = (String)((JavascriptExecutor) driver).executeScript("return (document.querySelector(\"link[rel='canonical']\") ? (document.querySelector(\"link[rel='canonical']\").href) : \"-\");");
+		String robots = (String)((JavascriptExecutor) driver).executeScript("return (document.querySelector(\"meta[name='robots']\") ? (document.querySelector(\"meta[name='robots']\").content) : \"-\");");
+		String ogTitle = (String)((JavascriptExecutor) driver).executeScript("return (document.querySelector(\"meta[property='og:title']\") ? (document.querySelector(\"meta[property='og:title']\").content) : \"-\");");
+		String ogDescription = (String)((JavascriptExecutor) driver).executeScript("return (document.querySelector(\"meta[property='og:description']\") ? (document.querySelector(\"meta[property='og:description']\").content) : \"-\");");
+		String ogUrl = (String)((JavascriptExecutor) driver).executeScript("return (document.querySelector(\"meta[property='og:url']\") ? (document.querySelector(\"meta[property='og:url']\").content) : \"-\");");
+		String ogImage = (String)((JavascriptExecutor) driver).executeScript("return (document.querySelector(\"meta[property='og:image']\") ? (document.querySelector(\"meta[property='og:image']\").content) : \"-\");");
+		Long countH1 = (Long)((JavascriptExecutor) driver).executeScript("return document.querySelectorAll(\"h1\").length;");
+		Long countH2 = (Long)((JavascriptExecutor) driver).executeScript("return document.querySelectorAll(\"h2\").length;");
+		Long countH3 = (Long)((JavascriptExecutor) driver).executeScript("return document.querySelectorAll(\"h3\").length;");
+		Long countH4 = (Long)((JavascriptExecutor) driver).executeScript("return document.querySelectorAll(\"h4\").length;");
+		Long countH5 = (Long)((JavascriptExecutor) driver).executeScript("return document.querySelectorAll(\"h5\").length;");
+		System.out.println("");
+		System.out.println(";;url;;"+u+";;");
+		System.out.println(";;title;;"+title+";;");
+		System.out.println(";;description;;"+description+";;");
+		System.out.println(";;canonical;;"+canonical+";;");
+		System.out.println(";;robots;;"+robots+";;");
+		System.out.println(";;ogTitle;;"+ogTitle+";;");
+		System.out.println(";;ogDescription;;"+ogDescription+";;");
+		System.out.println(";;ogUrl;;"+ogUrl+";;");
+		System.out.println(";;ogImage;;"+ogImage+";;");
+		System.out.println(";;countH1;;"+countH1+";;");
+		System.out.println(";;countH2;;"+countH2+";;");
+		System.out.println(";;countH3;;"+countH3+";;");
+		System.out.println(";;countH4;;"+countH4+";;");
+		System.out.println(";;countH5;;"+countH5+";;");
+		System.out.println("");
+		}
+		//capturarTela();
+	}
+	
+	@Dado("^login QTeste Homologa$")
+	public void loginQTeste() throws Exception {
+		QTesteWeb.abrirQTeste();
+		Thread.sleep(5000);
+		LoginPage loginPage = new LoginPage();
+		loginPage.loginQteste(Ambiente.HOMOLOGA.toString());
+		capturarTela();
+	}
+
+	@Dado("^valida Ambiente QTeste (.*)$")
+	public void validaAmbienteQTeste(String ambiente) throws Exception {
+		if (ambiente.equals(Ambiente.HOMOLOGA.toString()))
+			validaAmbienteHomologaQTeste();
+		else if (ambiente.equals(Ambiente.DEVELOP.toString()))
+			validaAmbienteDevelopQTeste();
+		else if (ambiente.equals(Ambiente.PRODUCAO.toString()))
+			validaAmbienteProducaoQTeste();
+		else
+			assertTrue(false);
+		capturarTela();
+	}
+
+	@Dado("^valida Acesso QTeste (.*)$")
+	public void validaAcessoQTeste(String paginaAcesso) throws Exception {		
+		Thread.sleep(15000);
+		if (paginaAcesso.equals(PageType.HOME.toString())) {
+			new HomePage().validaAcessoHomeQTeste();
+		}
+		else if (paginaAcesso.equals(PageType.TESTES_MOBILE.toString())||paginaAcesso.equals(PageType.TESTES_WEB.toString()))
+			new TestesPage().validaAcessoTestesQTeste(paginaAcesso);
+		else if (paginaAcesso.equals(PageType.LISTA_EVIDENCIAS.toString()))
+			new ListaEvidenciasPage().validaAcessoListaEvidenciasQTeste();
+		else if (paginaAcesso.equals(PageType.ANUENCIA.toString()))
+			new AnuenciaPage().validaAcessoAnuenciaQTeste();
+		else
+			assertTrue(false);	
+		
+		capturarTela();
+	}
+	
+	public void validaAmbienteHomologaQTeste() {
+		driver = PageUtils.retornaDriverSelenium();
+		boolean testAmbiente = driver.getCurrentUrl().contains(Ambiente.HOMOLOGA.getUrl());
+		assertTrue(testAmbiente);
+		capturarTela();
+	}
+
+	public void validaAmbienteDevelopQTeste() {
+		driver = PageUtils.retornaDriverSelenium();
+		boolean testAmbiente = driver.getCurrentUrl().contains(Ambiente.DEVELOP.getUrl());
+		assertTrue(testAmbiente);
+		capturarTela();
+	}
+
+	public void validaAmbienteProducaoQTeste() {
+		driver = PageUtils.retornaDriverSelenium();
+		boolean testAmbiente = driver.getCurrentUrl().contains(Ambiente.PRODUCAO.getUrl());
+		assertTrue(testAmbiente);
+		capturarTela();
+	}
+}

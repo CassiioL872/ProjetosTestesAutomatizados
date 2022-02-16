@@ -1,0 +1,26 @@
+package br.ce.wcaquino.rest;
+
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
+
+public class OlaMundoTest {
+
+	@Test
+	public void testOlaMundo() {
+		
+		Response response = RestAssured.request(Method.GET, "http://restapi.wcaquino.me:80/ola");
+		assertTrue(response.getBody().asString().equals("Ola Mundo!"));
+		assertTrue("O status code deve ser 201", response.statusCode() == 20);
+		
+		ValidatableResponse validacao = response.then();
+		validacao.statusCode(200);
+		
+	}
+	
+}
